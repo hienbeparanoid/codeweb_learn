@@ -1,0 +1,125 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>tieu de trang</title>
+        <style>
+            th, td {
+                width: 150px;
+                text-align: center;
+            }
+            .highlight {
+                background-color: red;
+            }
+        </style>
+        <script>
+            // Hiển thị giờ điện tử theo thời gian thực
+            function showTime() {
+                let today = new Date();
+                let h = today.getHours();
+                let m = today.getMinutes();
+                let s = today.getSeconds();
+                m = (m < 10) ? "0" + m : m;
+                s = (s < 10) ? "0" + s : s;
+                document.getElementById('clock').innerHTML = h + ":" + m + ":" + s;
+                setTimeout(showTime, 1000);
+            }
+
+            // Xử lý sự kiện chuột trái và chuột phải trên đoạn văn bản
+            function detectMouseClick(e) {
+                if (e.button === 0) {
+                    alert("Bạn vừa click chuột trái!");
+                } else if (e.button === 2) {
+                    alert("Bạn vừa click chuột phải!");
+                }
+            }
+
+            // Tô nền đỏ khi click vào dòng trong table, click lại bỏ nền
+            function toggleRowHighlight(row) {
+                row.classList.toggle("highlight");
+            }
+
+            // Thêm một dòng vào table
+            function addRow() {
+                let table = document.querySelector("table");
+                let newRow = table.insertRow(0); // Chèn ở vị trí đầu tiên
+                newRow.insertCell(0).innerHTML = "Thêm dòng mới ở đây";
+                newRow.insertCell(1).innerHTML = "Thêm dòng mới ở đây";
+                newRow.onclick = function() { toggleRowHighlight(this); };
+            }
+
+            // Xóa các dòng được tô đỏ
+            function deleteHighlightedRows() {
+                let table = document.querySelector("table");
+                let rows = table.rows;
+                for (let i = rows.length - 1; i >= 0; i--) {
+                    if (rows[i].classList.contains("highlight")) {
+                        table.deleteRow(i);
+                    }
+                }
+            }
+
+            // Chỉ hiện thị dòng trong table
+            function showOnlyRows() {
+                let table = document.querySelector("table");
+                let rows = table.rows;
+                for (let i = 0; i < rows.length; i++) {
+                    for (let j = 0; j < rows[i].cells.length; j++) {
+                        rows[i].cells[j].style.display = "";
+                    }
+                }
+            }
+
+            // Chỉ hiện thị cột trong table
+            function showOnlyColumns() {
+                let table = document.querySelector("table");
+                let rows = table.rows;
+                for (let i = 0; i < rows.length; i++) {
+                    for (let j = 0; j < rows[i].cells.length; j++) {
+                        rows[i].cells[j].style.display = (j === 0) ? "" : "none";
+                    }
+                }
+            }
+
+            // Mở một trang mới
+            function openNewPage() {
+                window.open("https://tranduythanh.com", "_blank");
+            }
+
+            // Gán sự kiện chuột cho các dòng trong table
+            window.onload = function() {
+                showTime();  // Hiển thị giờ
+                let rows = document.querySelectorAll("table tr");
+                rows.forEach(row => {
+                    row.onclick = function() { toggleRowHighlight(this); };
+                });
+                document.getElementById("text-paragraph").onmousedown = detectMouseClick;
+            };
+        </script>
+    </head>
+    <body>
+        <p id="clock"></p> <!-- Hiển thị giờ điện tử -->
+        
+        <p id="text-paragraph">Click chuột vào dòng này. Sẽ xuất hiện thông báo phím bấm của chuột</p>
+
+        <table border="1">
+            <tr>
+                <td>Dòng 1 cột 1</td>
+                <td>Dòng 1 cột 2</td>
+            </tr>
+            <tr>
+                <td>Dòng 2 cột 1</td>
+                <td>Dòng 2 cột 2</td>
+            </tr>
+            <tr>
+                <td>Dòng 3 cột 1</td>
+                <td>Dòng 3 cột 2</td>
+            </tr>
+        </table>
+        <br>
+        <input type="button" value="Thêm vào" onclick="addRow()">
+        <input type="button" value="Xóa" onclick="deleteHighlightedRows()">
+        <input type="button" value="Chỉ hiện dòng" onclick="showOnlyRows()">
+        <input type="button" value="Chỉ hiện cột" onclick="showOnlyColumns()">
+        <input type="button" value="Mở một trang mới" onclick="openNewPage()">
+    </body>
+</html>

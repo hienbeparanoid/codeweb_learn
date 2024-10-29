@@ -1,0 +1,118 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>tieu de trang</title>
+        <style>
+            textarea {
+                width: 100%;
+                height: 100px;
+            }
+
+            input[type="button"] {
+            width: 100%;
+            box-sizing: border-box; /* Đảm bảo padding và border không làm thay đổi kích thước của nút */
+        }
+        </style>
+    </head>
+    <body>
+        <h2>Sử dụng các hàm Xử Lý Chuỗi</h2>
+        <table width="100%">
+            <tr>
+                <td>
+                    <fieldset>
+                        <legend><span style="font-weight: bold; font-size: large;">Nhập dữ liệu</span></legend>
+                        <textarea id="inputData"></textarea>
+                    </fieldset>
+                </td>
+                <td>
+                    <fieldset>
+                        <legend><span style="font-weight: bold; font-size: large;">Kết quả</span></legend>
+                        <textarea id="outputData" readonly></textarea>
+                    </fieldset>
+                </td>
+            </tr>
+            
+            <tr>
+                <td><input type="button" value="Nhập dữ liệu" onclick="processData()"></td>
+                <td><input type="button" value="Đếm ký tự hoa" onclick="countcapitalizeWords()"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="In chữ Hoa" onclick="toUpperCase()"></td>
+                <td><input type="button" value="In mỗi từ trên một dòng" onclick="printWordsLineByLine()"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="In chữ thường" onclick="toLowerCase()"></td>
+                <td><input type="button" value="Đếm số từ" onclick="countWords()"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="Đếm số ký tự thường" onclick="countLowerCase()"></td>
+                <td><input type="button" value="In Nguyên âm, phụ âm" onclick="printVowelsAndConsonants()"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="button" value="Xem Website xử lý chuỗi w3c"></td>
+            </tr>
+            
+        </table>        
+
+        <script>
+            function processData() {
+                const inputData = document.getElementById("inputData").value;
+                document.getElementById("outputData").value = inputData;
+            }
+
+            function toUpperCase() {
+                const inputData = document.getElementById("inputData").value;
+                document.getElementById("outputData").value = inputData.toUpperCase();
+            }
+
+            function toLowerCase() {
+                const inputData = document.getElementById("inputData").value;
+                document.getElementById("outputData").value = inputData.toLowerCase();
+            }
+
+            function countLowerCase() {
+                const inputData = document.getElementById("inputData").value;
+                let count = 0;
+                for (let i = 0; i < inputData.length; i++) {
+                    if (inputData[i] >= 'a' && inputData[i] <= 'z') {
+                        count++;
+                    }
+                }
+                document.getElementById("outputData").value = "Số ký tự thường: " + count;
+            }
+
+            function countcapitalizeWords() {
+                const inputData = document.getElementById("inputData").value.trim();
+                const words = inputData.split(/\s+/);
+                let capitalizedCount = 0;
+
+                words.forEach(word => {
+                    if (word.charAt(0) === word.charAt(0).toUpperCase() && word.charAt(0) !== word.charAt(0).toLowerCase()) {
+                        capitalizedCount++;
+                    }
+                });
+
+                document.getElementById("outputData").value = "Số từ viết hoa: " + capitalizedCount;
+            }
+
+            function printWordsLineByLine() {
+                const inputData = document.getElementById("inputData").value;
+                const words = inputData.split(" ");
+                document.getElementById("outputData").value = words.join("\n");
+            }
+
+            function countWords() {
+                const inputData = document.getElementById("inputData").value;
+                const words = inputData.trim().split(/\s+/);
+                document.getElementById("outputData").value = "Số từ: " + words.length;
+            }
+
+            function printVowelsAndConsonants() {
+                const inputData = document.getElementById("inputData").value;
+                const vowels = inputData.match(/[aeiouAEIOU]/g) || [];
+                const consonants = inputData.match(/[^aeiouAEIOU\s\d\W]/g) || [];
+                document.getElementById("outputData").value = `Nguyên âm: ${vowels.length}, Phụ âm: ${consonants.length}`;
+            }
+        </script>
+    </body>
+</html>

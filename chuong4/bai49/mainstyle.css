@@ -1,0 +1,29 @@
+.header {
+    background-color: #E5F1FF;
+    color: white;
+    padding: 10px;
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif, sans-serif;
+    background-color: #E5F1FF;
+}
+
+p {
+    font-size: 14px;
+    text-align: center;
+}
+
+button[type="submit"] {
+    border: none;
+}
+
+button[type="reset"] {
+    border: none;
+}
+
+input[type="text"], input[type="date"] {
+    width: 90%;
+    padding: 5px;
+    box-sizing: border-box;
+}

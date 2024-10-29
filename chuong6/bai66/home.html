@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Chi tiết sinh viên</title>
+        <style>
+            th {
+                background-color: orange;
+            }
+            td {
+                width: 50%;
+            }
+            tr.hover {
+                background-color: blue;
+                color: white;
+            }
+        </style>
+        <script>
+            // Đọc dữ liệu từ file XML và hiển thị lên bảng
+            function loadStudentInfo() {
+                fetch('data.xml')
+                    .then(response => response.text())
+                    .then(xmlString => {
+                        const parser = new DOMParser();
+                        const xmlDoc = parser.parseFromString(xmlString, "text/xml");
+
+                        // Lấy các phần tử từ XML
+                        const mssv = xmlDoc.getElementsByTagName("mssv")[0].textContent;
+                        const hoTen = xmlDoc.getElementsByTagName("hoTen")[0].textContent;
+                        const ngaySinh = xmlDoc.getElementsByTagName("ngaySinh")[0].textContent;
+                        const gioiTinh = xmlDoc.getElementsByTagName("gioiTinh")[0].textContent;
+
+                        // Hiển thị lên bảng
+                        document.getElementById("mssv").textContent = mssv;
+                        document.getElementById("hoTen").textContent = hoTen;
+                        document.getElementById("ngaySinh").textContent = ngaySinh;
+                        document.getElementById("gioiTinh").textContent = gioiTinh;
+                    })
+                    .catch(error => {
+                        console.error("Error loading XML file:", error);
+                    });
+            }
+
+            // di chuyển chuột vào/ra dòng trong bảng
+            function addHoverEffect() {
+                const rows = document.querySelectorAll("tr");
+                rows.forEach(row => {
+                    row.addEventListener("mouseover", function() {
+                        this.classList.add("hover");
+                    });
+                    row.addEventListener("mouseout", function() {
+                        this.classList.remove("hover");
+                    });
+                });
+            }
+
+            window.onload = function() {
+                loadStudentInfo();
+                addHoverEffect();
+            };
+        </script>
+    </head>
+    <body>
+        <table border="1">
+            <tr>
+                <th colspan="2">Chi tiết thông tin sinh viên</th>
+            </tr>
+            <tr>
+                <td>Mã sinh viên</td>
+                <td id="mssv"></td>
+            </tr>
+            <tr>
+                <td>Họ tên</td>
+                <td id="hoTen"></td>
+            </tr>
+            <tr>
+                <td>Ngày sinh</td>
+                <td id="ngaySinh"></td>
+            </tr>
+            <tr>
+                <td>Giới tính</td>
+                <td id="gioiTinh"></td>
+            </tr>
+        </table>
+    </body>
+</html>

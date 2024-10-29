@@ -1,0 +1,78 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>tieu de trang</title>
+        <style>
+            th {
+                width: 150px;
+            }
+        </style>
+        <script>
+            // JSON Array chứa danh sách sản phẩm
+            const Sanphams = [
+                {
+                    "MaSP": "sp_1xxx",
+                    "TenSP": "DELL Inspiron 14NR",
+                    "SoLuong": 100,
+                    "DonGia": 150000
+                },
+                {
+                    "MaSP": "sp_2yyyy",
+                    "TenSP": "HP Inspiron 113",
+                    "SoLuong": 130,
+                    "DonGia": 140000
+                },
+                {
+                    "MaSP": "sp_3zzz",
+                    "TenSP": "Acer Aspire 7",
+                    "SoLuong": 50,
+                    "DonGia": 120000
+                }
+            ];
+
+            // Hàm hiển thị sản phẩm lên table
+            function displayProducts() {
+                const table = document.querySelector("table"); // Chọn bảng
+
+                // Duyệt qua các sản phẩm trong JSON Array và tạo dòng tương ứng
+                Sanphams.forEach(product => {
+                    const tr = document.createElement("tr");
+
+                    // Tạo và thêm cột Mã sản phẩm
+                    const tdMa = document.createElement("td");
+                    tdMa.innerText = product.MaSP;
+                    tr.appendChild(tdMa);
+
+                    // Tạo và thêm cột Tên sản phẩm
+                    const tdTen = document.createElement("td");
+                    tdTen.innerText = product.TenSP;
+                    tr.appendChild(tdTen);
+
+                    // Tạo và thêm cột Số lượng
+                    const tdSoLuong = document.createElement("td");
+                    tdSoLuong.innerText = product.SoLuong;
+                    tr.appendChild(tdSoLuong);
+
+                    // Tạo và thêm cột Đơn giá
+                    const tdDonGia = document.createElement("td");
+                    tdDonGia.innerText = product.DonGia;
+                    tr.appendChild(tdDonGia);
+
+                    // Thêm dòng mới vào bảng
+                    table.appendChild(tr);
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <button onclick="displayProducts()">Hiển thị</button>
+        <table border="1">
+            <tr>
+                <th>Mã</th>
+                <th>Tên</th>
+                <th>Số lượng</th>
+                <th>Đơn giá</th>
+            </tr>
+        </table>
+    </body>
+</html>

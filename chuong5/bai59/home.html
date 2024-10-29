@@ -1,0 +1,123 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>tieu de trang</title>
+        <style>
+            h3{
+                color: green;
+            }
+            h4{
+                color: white;
+            }
+            a{
+                color: green;
+                text-decoration: none;
+            }
+            a:hover{
+                color: red;
+            }
+            .tight-wrap1 {
+                float: right; 
+                margin: 0 15px;
+            }
+            .tight-wrap2 {
+                float: left; 
+                margin: 0 15px;
+            }
+            .highlight{
+                color: red;
+                font-weight: bold;
+            }
+        </style>
+
+    <script>
+        function daysUntilChristmas() {
+            // Lấy ngày hiện tại
+            const today = new Date();
+            
+            // Lấy năm hiện tại
+            const currentYear = today.getFullYear();
+
+            // Tạo đối tượng ngày Noel (25 tháng 12) của năm hiện tại
+            let christmas = new Date(currentYear, 11, 25); // Tháng 11 là tháng 12 vì trong JavaScript tháng bắt đầu từ 0
+
+            // Nếu ngày hiện tại đã qua Noel, tính cho Noel của năm sau
+            if (today > christmas) {
+                christmas = new Date(currentYear + 1, 11, 25);
+            }
+
+            // Tính số ngày còn lại
+            const oneDay = 24 * 60 * 60 * 1000; // Số mili giây trong 1 ngày
+            const daysLeft = Math.round((christmas - today) / oneDay);
+
+            // Cập nhật thông tin trong HTML
+            document.getElementById("daysUntilChristmas").innerHTML = `Only ${daysLeft} days until Christmas!`;
+        }
+    </script>
+    </head>
+    <body background="images/Wrap.jpg" onload="daysUntilChristmas()">
+        <table border="1" width="650" height="600">
+            <tr>
+                <td rowspan="4" style="vertical-align: top; background-color: black;">
+                    <h4>Why dont you visit our:</h4>
+                    <a href="">Home Page</a> <br>
+                    <a href="">Angels</a> <br>
+                    <a href="">Cards</a> <br>
+                    <a href="">Collections</a> <br>
+                    <a href="">Craches</a> <br>
+                    <a href="">Ganand</a> <br>
+                    <a href="">Gift Warps</a> <br>
+                    <a href="">Lights</a> <br>
+                    <a href="">Nutcrackers</a> <br>
+                    <a href="">Ornaments</a> <br>
+                    <a href="">Santas</a> <br>
+                    <a href="">Trains</a> <br>
+                    <a href="">Trees</a> <br>
+                    <a href="">Villages</a> <br>
+                    <a href="">Wreaths</a>
+                </td>
+                <td colspan="2" style="background-color: white;">
+                    <div style="text-align: center;">
+                        <img src="images/Logo.jpg" alt="">
+                    </div>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="background-color: yellow;">
+                    <p style="text-align: center;"><b>Today is February 9</b>
+                    <br>
+                        <b id="daysUntilChristmas"></b>
+                    </p>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td style="background-color: white; vertical-align: top;">
+                    <h3>Welcome!</h3>
+                    <img src="images/Bells.jpg" class="tight-wrap2">
+                    <p>Welcome to <span class="highlight">North Pole Novelties</span>. Consider us your complete holiday store. Whether you're a collector or simply looking for a beautiful piece to treasure for years, you'll find it at NPN. Please click on one of the many links to explore all we have to offer.</p>
+                    <h3>News Flash!</h3>
+                    <p>North Pole Novelties is proud to announce a new line of <span class="highlight">Lasseter Old Towne Village collectible houses</span> . Start building your collection of these wonderful miniature porcelain houses and shops.</p>
+                    <p>Each model has accessories to enhance the collection. Be sure to order extra trees, fences, street lights and signs to bring activity and a festive atmosphere to your miniature town.</p>
+                </td>
+                <td style="background-color: white; vertical-align: top;">
+                    <h3>Who Are We?</h3>
+                    <img src="images/man.png" class="tight-wrap1">
+                    <p>Located in Seton Grove, Minnesota, North Pole Novelties is one of the oldest and largest holiday stores in the country. The store was founded in 1968 by <span class="highlight">David Watkins</span> (shown here). Today, David, his family, and over 300 employees manage the daily operation of making the holiday season last all year.</p>
+                    <p>The store itself is the size of two football fields and attracts visitors from around the world. If you can't pay us a visit, order our catalogue. We will deliver to any spot in the United States and overseas. In a rush? We can deliver your order overnight! We also gift wrap.</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="background-color: white;">
+                    <p style="text-align: center; color: green;">
+                        North Pole Noveltles <br>
+                        25 Cahdale Avenue <br>
+                        Saton Grove, MN 53112 <br>
+                        Telephone: (404)555-1225
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

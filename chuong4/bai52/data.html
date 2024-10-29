@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>tieu de trang</title>
+        <style>
+            .label {
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Kết quả Liên hệ</h1>
+            <p><span class="label">Họ và tên:</span> <span id="name"></span></p>
+            <p><span class="label">Email:</span> <span id="email"></span></p>
+            <p><span class="label">Giới tính:</span> <span id="gender"></span></p>
+            <p><span class="label">Nghề nghiệp ổn định:</span> <span id="stable_job"></span></p>
+            <p><span class="label">Đến từ:</span> <span id="from"></span></p>
+            <p><span class="label">Nội dung liên hệ:</span> <span id="message"></span></p>
+            <script>
+                // Function to get the URL parameters and display them
+                function getQueryParams() {
+                    const urlParams = new URLSearchParams(window.location.search);
+    
+                    // Extracting data from the query string
+                    document.getElementById('name').textContent = urlParams.get('name');
+                    document.getElementById('email').textContent = urlParams.get('email');
+                    document.getElementById('gender').textContent = urlParams.get('gender') === 'nam' ? 'Nam' : 'Nữ';
+                    document.getElementById('stable_job').textContent = urlParams.get('stable_job') ? 'Có' : 'Không';
+                    document.getElementById('from').textContent = urlParams.get('from');
+                    document.getElementById('message').textContent = urlParams.get('message');
+                }
+    
+                // Run the function when the page loads
+                window.onload = getQueryParams;
+            </script>
+    </body>
+</html>

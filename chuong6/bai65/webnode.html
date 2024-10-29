@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Quản lý Node</title>
+        <style>
+            /* Thiết lập chiều rộng ngắn hơn cho các ô nhập vị trí sửa */
+            input.short {
+                width: 50px;
+            }
+        </style>
+        <script>
+            function addNode() {
+                let content = document.querySelector("#addContent").value;
+                let position = parseInt(document.querySelector("#addPosition").value);
+
+                let newNode = document.createElement("li");
+                newNode.textContent = content;
+
+                let nodeList = document.querySelector("ul").children;
+
+                if (position >= 0 && position <= nodeList.length) {
+                    let parent = document.querySelector("ul");
+                    let referenceNode = nodeList[position];
+                    if (referenceNode) {
+                        parent.insertBefore(newNode, referenceNode);
+                    } else {
+                        parent.appendChild(newNode);
+                    }
+                } else {
+                    alert("Vị trí không hợp lệ");
+                }
+            }
+
+            function deleteNode() {
+                let position = parseInt(document.querySelector("#deletePosition").value);
+                let nodeList = document.querySelector("ul").children;
+
+                if (position >= 0 && position < nodeList.length) {
+                    let parent = document.querySelector("ul");
+                    parent.removeChild(nodeList[position]);
+                } else {
+                    alert("Vị trí không hợp lệ");
+                }
+            }
+
+            function editNode() {
+                let content = document.querySelector("#editContent").value;
+                let position = parseInt(document.querySelector("#editPosition").value);
+
+                let nodeList = document.querySelector("ul").children;
+
+                if (position >= 0 && position < nodeList.length) {
+                    let newNode = document.createElement("li");
+                    newNode.textContent = content;
+
+                    let parent = document.querySelector("ul");
+                    parent.replaceChild(newNode, nodeList[position]);
+                } else {
+                    alert("Vị trí không hợp lệ");
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Quản lý Node</h1>
+        <table>
+            <tr>
+                <td><input type="button" value="THÊM NODE" onclick="addNode()"></td>
+                <td>NỘI DUNG <input type="text" id="addContent"></td>
+                <td>VỊ TRÍ <input type="text" id="addPosition" class="short"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="XÓA NODE" onclick="deleteNode()"></td>
+                <td></td>
+                <td>VỊ TRÍ <input type="text" id="deletePosition" class="short"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="SỬA" onclick="editNode()"></td>
+                <td>NỘI DUNG SỬA <input type="text" id="editContent"></td>
+                <td>VỊ TRÍ <input type="text" id="editPosition" class="short"></td>
+            </tr>
+        </table>
+        <p>Web Node</p>
+        <ul>
+            <li>Data base</li>
+            <li>Web1</li>
+            <li>Web2</li>
+        </ul>
+    </body>
+</html>

@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>tieu de trang</title>
+    </head>
+    <body>
+        <form action="">
+            <table>
+                <tr>
+                    <td>a(So Thu 1)</td>
+                    <td><input type="number" name="so1" id="so1"></td>
+                </tr>
+                <tr>
+                    <td>b(So Thu 2)</td>
+                    <td><input type="number" name="so2" id="so2"></td>
+                </tr>
+                <tr>
+                    <td>c(So Thu 3)</td>
+                    <td><input type="number" name="so3" id="so3"></td>
+                </tr>
+                <tr>
+                    <td>KET QUA</td>
+                    <td><input type="number" name="kq" id="kq"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="button" value="MAX" onclick="calculateMax()">
+                        <input type="button" value="MIN" onclick="calculateMin()">
+                        <input type="button" value="sin(a)" onclick="calculateSin()">
+                        <input type="button" value="cos(a)" onclick="calculateCos()">
+                        <input type="button" value="a^b" onclick="calculatePower()">
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+        <script>
+            // Function to calculate MAX of a, b, c
+            function calculateMax() {
+                let a = parseFloat(document.getElementById('so1').value);
+                let b = parseFloat(document.getElementById('so2').value);
+                let c = parseFloat(document.getElementById('so3').value);
+                let maxVal = Math.max(a, b, c);
+                document.getElementById('kq').value = maxVal;
+            }
+
+            // Function to calculate MIN of a, b, c
+            function calculateMin() {
+                let a = parseFloat(document.getElementById('so1').value);
+                let b = parseFloat(document.getElementById('so2').value);
+                let c = parseFloat(document.getElementById('so3').value);
+                let minVal = Math.min(a, b, c);
+                document.getElementById('kq').value = minVal;
+            }
+
+            // Function to calculate sin(a)
+            function calculateSin() {
+                let a = parseFloat(document.getElementById('so1').value);
+                let sinVal = Math.sin(a);
+                document.getElementById('kq').value = sinVal;
+            }
+
+            // Function to calculate cos(a)
+            function calculateCos() {
+                let a = parseFloat(document.getElementById('so1').value);
+                let cosVal = Math.cos(a);
+                document.getElementById('kq').value = cosVal;
+            }
+
+            // Function to calculate a^b
+            function calculatePower() {
+                let a = parseFloat(document.getElementById('so1').value);
+                let b = parseFloat(document.getElementById('so2').value);
+                let powerVal = Math.pow(a, b);
+                document.getElementById('kq').value = powerVal;
+            }
+        </script>
+    </body>
+</html>

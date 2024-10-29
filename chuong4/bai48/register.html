@@ -1,0 +1,119 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>register</title>
+        <style type="text/css">
+            @import url(mainstyle.css);
+        </style>
+    </head>
+    <body>
+            <div class="header">
+                <img src="images/Jackson.gif" alt="">
+            </div>
+            <h2>Registration Form</h2>
+            <p>Register your Jackson Electronics product here</p>
+            <form>
+                <table>
+                    <tr>
+                        <td><label for="firstname">First Name:</label></td>
+                        <td><input type="text" id="firstname" name="firstname"></td>
+                        <td><label for="lastname">Last Name:</label></td>
+                        <td><input type="text" id="lastname" name="lastname"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="address1">Address #1:</label></td>
+                        <td colspan="3"><input type="text" id="address1" name="address1" style="width: 100%;"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="address2">Address #2:</label></td>
+                        <td colspan="3"><input type="text" id="address2" name="address2" style="width: 100%;"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="city">City:</label></td>
+                        <td><input type="text" id="city" name="city"></td>
+                        <td><label for="state">State:</label></td>
+                        <td><input type="text" id="state" name="state" style="width: 60px;">
+                            <label for="zip">Zip:</label>
+                            <input type="text" id="zip" name="zip" style="width: 60px;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="country">Country:</label></td>
+                        <td colspan="3">
+                            <select id="country" name="country">
+                                <option value="United States">United States</option>
+                                <option value="Canada">Canada</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"><hr style="width: 100%;"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="product">Product:</label></td>
+                        <td colspan="3">
+                            <select id="product" name="product">
+                                <option value="ScanMaster">ScanMaster</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="date_purchased">Date Purchased:</label></td>
+                        <td colspan="3"><input type="date" id="date_purchased" name="date_purchased"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="serial">Serial #:</label></td>
+                        <td colspan="3"><input type="text" id="serial" name="serial"></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top;">Used for:</td>
+                        <td colspan="3">
+                            <table class="nested-table">
+                                <tr>
+                                    <td><input type="radio" name="used_for" value="Home"> Home</td>
+                                    <td><input type="radio" name="used_for" value="Education"> Educational Institution</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="radio" name="used_for" value="Business"> Business</td>
+                                    <td><input type="radio" name="used_for" value="Other"> Other</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="radio" name="used_for" value="Government"> Government</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top;">System (check all that apply):</td>
+                        <td colspan="3">
+                            <table>
+                                <tr>
+                                    <td><input type="checkbox" name="system" value="Windows"> Windows</td>
+                                    <td><input type="checkbox" name="system" value="UNIX"> UNIX</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" name="system" value="Macintosh"> Macintosh</td>
+                                    <td><input type="checkbox" name="system" value="Other"> Other</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"><hr style="width: 100%;"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="comments">Comments:</label></td>
+                        <td colspan="3"><textarea id="comments" name="comments" rows="4" cols="50"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="text-align: center;">
+                            <button type="submit">Click to register</button>
+                            <button type="reset">Click to cancel</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+</html>

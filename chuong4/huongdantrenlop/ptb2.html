@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>
+            Phương trình bậc 2
+        </title>
+        <script type="text/javascript">
+            function XyLyGiai() {  <!-- Chữ "function" phải viết thường -->
+                a=eval(myform.hsa.value)
+                b=eval(document.getElementById("hsb").value)
+                c=parseFloat(myform.hsc.value)
+                tdketqua=document.getElementById("tdketqua")
+                if (a==0){
+                    if (b==0 && c==0){
+                        tdketqua.innerText='Vô số nghiệm'
+                    } else if (b==0 && c!=0){
+                        tdketqua.innerText='Vô nghiệm'
+                    } else{
+                        tdketqua.innerText=-c/b
+                    }
+                } else {
+                    delta=Math.pow(b,2)-4*a*c
+                    if (delta<0){
+                        tdketqua.innerText='Vô nghiệm'
+                    } else if (delta==0){
+                        tdketqua.innerText="x1=x2" +(-b/(2*a))
+                    } else {
+                        x1= (-b-Math.sqrt(delta))/(2*a)
+                        x2=(-b+Math.sqrt(delta))/(2*a)
+                        tdketqua.innerText="x1="+x1+";x2="+x2
+                    }
+                }
+        }
+        </script>
+    </head>
+    <body>
+        <h1>Phương trình bậc 2</h1>
+        <form name="myform">
+            <table border="1">
+                <tr>
+                    <td>Hệ số a:</td>
+                    <td><input type="number" name="hsa" id="hsa"></td>
+                </tr>
+                <tr>
+                    <td>Hệ số b:</td>
+                    <td><input type="number" name="hsb" id="hsb"></td>
+                </tr>
+                <tr>
+                    <td>Hệ số c:</td>
+                    <td><input type="number" name="hsc" id="hsc"></td>
+                </tr>
+                <tr>
+                    <td>Kết quả:</td>
+                    <td id="tdketqua" style="background-color:yellow"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="reset" value="New">
+                        <input type="button" value="Giải" onclick="XyLyGiai()">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

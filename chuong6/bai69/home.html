@@ -1,0 +1,99 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>tieu de trang</title>
+        <style>
+            td {
+                width: 150px;
+            }
+        </style>
+        <script>
+            var employeesData;  // Lưu dữ liệu XML
+
+            // Hàm load dữ liệu từ file XML
+            function loadData() {
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "data.xml", true);
+                xhr.send();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        employeesData = xhr.responseXML;
+                        loadTitles(employeesData);  // Gọi hàm để load các title vào droplist
+                    }
+                };
+            }
+
+            // Hàm load các Title không trùng nhau lên Droplist
+            function loadTitles(xmlDoc) {
+                var employees = xmlDoc.getElementsByTagName("employee");
+                var titles = new Set();  // Dùng Set để lưu các title không trùng
+
+                for (var i = 0; i < employees.length; i++) {
+                    var title = employees[i].getAttribute("title");
+                    titles.add(title);
+                }
+
+                var select = document.getElementById("titleSelect");
+
+                titles.forEach(function (title) {
+                    var option = document.createElement("option");
+                    option.value = title;
+                    option.innerText = title;
+                    select.appendChild(option);
+                });
+            }
+
+            // Hàm hiển thị danh sách Employee theo Title trong Table
+            function displayEmployeesByTitle() {
+                var selectedTitle = document.getElementById("titleSelect").value;
+                var employees = employeesData.getElementsByTagName("employee");
+                var tbody = document.getElementById("employeeList");
+                tbody.innerHTML = "";  // Xóa các dòng cũ trong table
+
+                for (var i = 0; i < employees.length; i++) {
+                    var employeeTitle = employees[i].getAttribute("title");
+                    if (employeeTitle === selectedTitle) {
+                        var id = employees[i].getAttribute("id");
+                        var name = employees[i].getElementsByTagName("name")[0].childNodes[0].nodeValue;
+                        var phone = employees[i].getElementsByTagName("phone")[0].childNodes[0].nodeValue;
+
+                        var tr = document.createElement("tr");
+
+                        var tdId = document.createElement("td");
+                        tdId.innerText = id;
+                        tr.appendChild(tdId);
+
+                        var tdName = document.createElement("td");
+                        tdName.innerText = name;
+                        tr.appendChild(tdName);
+
+                        var tdPhone = document.createElement("td");
+                        tdPhone.innerText = phone;
+                        tr.appendChild(tdPhone);
+
+                        tbody.appendChild(tr);
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body onload="loadData()">
+        <table border="1">
+            <tr>
+                <td>Chọn Title:</td>
+                <td colspan="2">
+                    <select id="titleSelect" onchange="displayEmployeesByTitle()">
+                        <option value="">Select Title</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Mã Employee</th>
+                <th>Tên Employee</th>
+                <th>Phone Employee</th>
+            </tr>
+            <tbody id="employeeList">
+            </tbody>
+        </table>
+    </body>
+</html>

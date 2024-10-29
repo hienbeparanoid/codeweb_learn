@@ -1,0 +1,92 @@
+/* Định dạng cho thẻ <div> chứa hình ảnh */
+div {
+    text-align: center;
+}
+
+/* Định dạng cho các liên kết trong thẻ <p> */
+.nav-link {
+    margin: 0 10px; /* Thêm khoảng cách ngang giữa các liên kết */
+}
+
+h1 {
+    color: #C6B390;
+}
+
+.tight-wrap {
+    float: right; 
+    margin: 0 15px;
+}
+
+.highlight {
+    color: red;
+    font-weight: bold;
+}
+
+.highlight2 {
+    color: #C6B390;
+    font-weight: bold;
+}
+
+.indented {
+    margin-left: 20px; /* Thay đổi giá trị theo ý muốn */
+}
+
+BODY {
+    color:green;
+    background: white url(Draft.jpg) no-repeat fixed center center
+    }
+    H1, H2, H3, H4, H5, H6 {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #C6B390;
+    }
+    ADDRESS {
+    font-size: 0.9em;
+    font-style:normal;
+    text-align:center;
+    text-transform:uppercase
+    }
+    blockquote {
+        background-color: silver;
+        padding: 10px; /* Thêm padding để nội dung không chạm vào viền */
+        margin-left: 20px; /* Thụt lề cho blockquote */
+        border-left: 5px solid #ccc; /* Thêm viền trái để làm nổi bật */
+    }
+    UL {list-style:circle url(images/Apple.jpg) outside}
+    UL B {
+    color:rgb(155,0,0)
+    }
+    A {
+    font-size: 0.9em;
+    color:green;
+    }
+    A:hover {
+    color:red;
+    text-transform:uppercase;
+    font-weight:bold
+    }
+    .Special {
+    color: rgb(153,102,6);
+    font-weight:bold
+    }
+    DIV.Article {
+    padding: 0.5em;
+    border-style: solid;
+    border-width: 2px;
+    background-color: rgb(252,221,163);
+    width: 40%;
+    float:right;
+    margin-right: 20px;
+    margin-top: 20px;
+    }
+    .info-box {
+        background-color: rgb(252,221,163);
+        color:green;
+        padding: 15px;
+        border-style: solid;
+        border-width: 2px;
+        width: 40%;
+        margin-top: 20px;
+        float: right;
+        margin-right: 20px;
+        text-align: justify; 
+    }

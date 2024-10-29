@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clickable Map</title>
+</head>
+<body>
+    <h2>Click a region to view a report</h2>
+    <!-- Embed the map image -->
+    <img src="images/Map.jpg" alt="US Regions Map" usemap="#usmap" width="500">
+
+    <!-- Define the map areas and corresponding links -->
+    <map name="usmap">
+        <area target="mainframe" alt="west" title="west" href="west.html" coords="56,54,25" shape="circle">
+        <area target="mainframe" alt="midwest" title="midwest" href="midwest.html" coords="123,50,24" shape="circle">
+        <area target="mainframe" alt="south" title="south" href="south.html" coords="147,109,30" shape="circle">
+        <area target="mainframe" alt="northwest" title="northwest" href="northwest.html" coords="207,41,36" shape="circle">
+    </map>
+</body>
+</html>

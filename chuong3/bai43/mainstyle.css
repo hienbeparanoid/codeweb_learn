@@ -1,0 +1,78 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: black;
+    color: white;
+}
+
+.sidebar {
+    width: 400px;
+    padding: 20px;
+}
+
+.sidebar-item {
+    background-color: red;
+    color: white;
+    padding: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    border: 2px solid yellow;
+    text-decoration: none; /* Để loại bỏ gạch chân của liên kết */
+    display: block;
+}
+
+.sidebar-item::first-letter {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.color1::first-letter { color: #FF6B6B; }
+.color2::first-letter { color: #4ECDC4; }
+.color3::first-letter { color: #45B7D1; }
+.color4::first-letter { color: #FDCB6E; }
+.color5::first-letter { color: #6C5CE7; }
+.color6::first-letter { color: #55E6C1; }
+.color7::first-letter { color: #FFA07A; }
+.color8::first-letter { color: #74B9FF; }
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    line-height: 0.9;
+}
+
+.word {
+    display: inline-block;
+    transform: rotate(-5deg); /* Nghiêng nhẹ mỗi từ */
+    margin-bottom: -10px; /* Để các từ nằm sát nhau */
+}
+
+.description {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.images {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap:10px;
+}
+
+.images img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}

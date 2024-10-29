@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="bitcoinApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin Price Index (BPI)</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #f7931a;
+        }
+        .price {
+            font-size: 2em;
+            margin: 20px 0;
+        }
+        .currency {
+            font-size: 1.5em;
+        }
+        .timestamp {
+            margin-top: 20px;
+            font-size: 1em;
+            color: #666;
+        }
+    </style>
+</head>
+<body ng-controller="BitcoinController">
+
+    <h1>Bitcoin Price Index (BPI)</h1>
+
+    <div class="price">
+        <strong>{{ priceUSD }} USD</strong>
+    </div>
+
+    <div class="currency">
+        {{ priceGBP }} GBP | {{ priceEUR }} EUR
+    </div>
+
+    <div class="timestamp">
+        Last updated: {{ lastUpdated }}
+    </div>
+
+    <script>
+        // Khởi tạo AngularJS module
+        var app = angular.module('bitcoinApp', []);
+
+        // Tạo Controller
+        app.controller('BitcoinController', function($scope, $http, $interval) {
+            // Hàm lấy dữ liệu từ API
+            function getBitcoinPrice() {
+                $http.get('https://api.coindesk.com/v1/bpi/currentprice.json')
+                    .then(function(response) {
+                        // Gán giá trị từ API vào scope
+                        $scope.priceUSD = response.data.bpi.USD.rate;
+                        $scope.priceGBP = response.data.bpi.GBP.rate;
+                        $scope.priceEUR = response.data.bpi.EUR.rate;
+
+                        // Lấy thời gian hiện tại và định dạng bao gồm ngày và giờ
+                        var now = new Date();
+                        $scope.lastUpdated = now.toLocaleString(); // Hiển thị cả ngày và giờ
+                    })
+                    .catch(function(error) {
+                        console.error('Error fetching Bitcoin price:', error);
+                    });
+            }
+
+            // Lấy dữ liệu lần đầu
+            getBitcoinPrice();
+
+            // Cập nhật giá Bitcoin mỗi 10 giây
+            $interval(getBitcoinPrice, 10000);
+        });
+    </script>
+</body>
+</html>

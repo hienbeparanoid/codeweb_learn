@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>tieu de trang</title>
+        <style>
+            td {
+                width: 50%;
+                vertical-align: top;
+            }
+            h1 {
+                text-align: center;
+            }
+        </style>
+        <script>
+            function applyColors() {
+                // Get background color values
+                let bgRed = document.getElementById("bgRed").value;
+                let bgGreen = document.getElementById("bgGreen").value;
+                let bgBlue = document.getElementById("bgBlue").value;
+
+                // Get text color values
+                let textRed = document.getElementById("textRed").value;
+                let textGreen = document.getElementById("textGreen").value;
+                let textBlue = document.getElementById("textBlue").value;
+
+                // Format the color values in hexadecimal
+                let backgroundColor = `#${bgRed}${bgGreen}${bgBlue}`;
+                let textColor = `#${textRed}${textGreen}${textBlue}`;
+
+                // Apply the colors to the paragraph
+                let content = document.getElementById("content");
+                content.style.backgroundColor = backgroundColor;
+                content.style.color = textColor;
+            }
+        </script>
+    </head>
+    <body>
+        <h1>A Simple Color Picker</h1>
+        <table border="1">
+            <tr>
+                <td>
+                    <p>Background (enter values from '00' to 'FF')</p>
+                    RED: <input type="text" id="bgRed" maxlength="2" size="2" value="FF">
+                    GREEN: <input type="text" id="bgGreen" maxlength="2" size="2" value="FF">
+                    BLUE: <input type="text" id="bgBlue" maxlength="2" size="2" value="FF">
+
+                    <p>Text (enter values from '00' to 'FF')</p>
+                    RED: <input type="text" id="textRed" maxlength="2" size="2" value="00">
+                    GREEN: <input type="text" id="textGreen" maxlength="2" size="2" value="00">
+                    BLUE: <input type="text" id="textBlue" maxlength="2" size="2" value="00">
+                    <br>
+                    <br>
+                    <div style="text-align: center;">
+                        <input type="button" value="Apply" onclick="applyColors()"> 
+                        <input type="reset" value="Reload">
+                    </div>
+                </td>
+                <td id="content">
+                    <h4>HAMLET:</h4>
+                    <p>Speak the speech, I pray you, as I pronounced it to you, trippingly on the tongue: but if you mouth it, as many of your players do, I had as lief the town-crier spoke my lines.</p>
+                </td>
+            </tr>
+        </table>
+        <p>*If you are using Netscape, you won't be able to change the text color</p>
+    </body>
+</html>

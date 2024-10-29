@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>tieu de trang</title>
+        <style>
+            th{
+                width: 150px;
+                text-align: center;
+            }
+        </style>
+        <script>
+            function loadInfor(){
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "cd_catalog.xml", true);
+                xhr.send();
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState == 4 && xhr.status == 200){
+                        var xmlDoc = xhr.responseXML;
+                        // Mô hình DOM
+                        displayInfo(xmlDoc);
+                    } 
+                    else if (xhr.readyState == 4 && xhr.status != 200){
+                        // Xử lý khi không load được data
+                        alert("Không thể load được dữ liệu");
+                    }
+                }
+            }
+
+            function displayInfo(xmlDoc){
+                var CATALOG = xmlDoc.getElementsByTagName("CD");
+                var tbodycd = document.getElementById("tbodycd");
+                for (var i = 0; i < CATALOG.length; i++){
+                    var CD = CATALOG[i];
+                    var CD_artist = CD.getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue;
+                    var CD_title = CD.getElementsByTagName("TITLE")[0].childNodes[0].nodeValue;
+
+                    var tr = document.createElement("tr");
+                    tbodycd.append(tr);
+
+                    var tdartist = document.createElement("td");
+                    tdartist.innerText = CD_artist;
+                    tr.append(tdartist);
+
+                    var tdtitle = document.createElement("td");
+                    tdtitle.innerText = CD_title ;
+                    tr.append(tdtitle);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <input type="button" value="Get my CD collection" onclick="loadInfor()">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Artist</th>
+                    <th>Title</th>
+                </tr>
+            </thead>
+            <tbody id="tbodycd">
+            </tbody>
+    </body>
+</html>

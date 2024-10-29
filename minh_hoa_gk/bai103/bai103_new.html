@@ -1,0 +1,171 @@
+<html>
+    <head>
+        <title>Bitcoin Price Index (BPI)</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                padding: 20px;
+                text-align: center;
+            }
+
+            h1 {
+                color: #f7931a;
+            }
+
+            table {
+                margin: 0 auto;
+                border-collapse: collapse;
+                width: 80%;
+                max-width: 800px;
+                background-color: white;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                border-radius: 10px;
+                overflow: hidden;
+            }
+
+            table, th, td {
+                border: 1px solid #ddd;
+            }
+
+            th, td {
+                padding: 10px;
+                text-align: left;
+            }
+
+            th {
+                background-color: #f7931a;
+                color: white;
+            }
+
+            tbody tr:nth-child(odd) {
+                background-color: #f9f9f9;
+            }
+
+            tbody tr:nth-child(even) {
+                background-color: #e9e9e9;
+            }
+
+            td {
+                font-size: 14px;
+            }
+
+            td[colspan="2"] {
+                text-align: center;
+            }
+
+            .disclaimer {
+                color: red;
+                font-style: italic;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Bitcoin Price Index (BPI)</h1>
+        <table>
+            <tr>
+                <td>Updated:</td>
+                <td id="tdtime_updated"></td>                
+            </tr>
+            <tr>
+                <td>Updated ISO:</td>
+                <td id="tdtime_updatedISO"></td>                
+            </tr>
+            <tr>
+                <td>Updated UK:</td>
+                <td id="tdtime_updateduk"></td>                
+            </tr>
+            <tr>
+                <td>Disclaimer:</td>
+                <td id="tddisclaimer"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>Symbol</th>
+                                <th>Rate</th>
+                                <th>Description</th>
+                                <th>Rate-Float</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td id="tdusdcode"></td>
+                                <td id="tdusdsymbol"></td>
+                                <td id="tdusdrate"></td>
+                                <td id="tdusddescription"></td>
+                                <td id="tdusdratefloat"></td>
+                            </tr>
+                            <tr>
+                                <td id="tdgbpcode"></td>
+                                <td id="tdgbpsymbol"></td>
+                                <td id="tdgbprate"></td>
+                                <td id="tdgbpdescription"></td>
+                                <td id="tdgbpratefloat"></td>
+                            </tr>
+                            <tr>
+                                <td id="tdeurcode"></td>
+                                <td id="tdeursymbol"></td>
+                                <td id="tdeurrate"></td>
+                                <td id="tdeurdescription"></td>
+                                <td id="tdeurratefloat"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <script>
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "https://api.coindesk.com/v1/bpi/currentprice.json", true);
+            xhr.send();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var text = xhr.responseText;
+                    var jsonBPI = JSON.parse(text);
+                    // Từ đây là mô hình DOM
+                    displayBPI(jsonBPI);
+                }
+            };
+
+            function displayBPI(jsonBPI) {
+                var tdtime_updated = document.getElementById("tdtime_updated");
+                var tdtime_updatedISO = document.getElementById("tdtime_updatedISO");
+                var tdtime_updateduk = document.getElementById("tdtime_updateduk");
+                var time = jsonBPI.time;
+                tdtime_updated.innerText = time.updated;
+                tdtime_updatedISO.innerText = time.updatedISO;
+                tdtime_updateduk.innerText = time.updateduk;
+
+                var tddisclaimer = document.getElementById("tddisclaimer");
+                var disclaimer = jsonBPI.disclaimer;
+                tddisclaimer.innerHTML = "<span class='disclaimer'>" + disclaimer + "</span>";
+
+                var bpi = jsonBPI.bpi;
+                var usd = bpi.USD;
+                document.getElementById("tdusdcode").innerText = usd.code;
+                document.getElementById("tdusdsymbol").innerHTML = usd.symbol;
+                document.getElementById("tdusdrate").innerText = usd.rate;
+                document.getElementById("tdusddescription").innerText = usd.description;
+                document.getElementById("tdusdratefloat").innerText = usd.rate_float;
+
+                var gbp = bpi.GBP;
+                document.getElementById("tdgbpcode").innerText = gbp.code;
+                document.getElementById("tdgbpsymbol").innerHTML = gbp.symbol;
+                document.getElementById("tdgbprate").innerText = gbp.rate;
+                document.getElementById("tdgbpdescription").innerText = gbp.description;
+                document.getElementById("tdgbpratefloat").innerText = gbp.rate_float;
+
+                var eur = bpi.EUR;
+                document.getElementById("tdeurcode").innerText = eur.code;
+                document.getElementById("tdeursymbol").innerHTML = eur.symbol;
+                document.getElementById("tdeurrate").innerText = eur.rate;
+                document.getElementById("tdeurdescription").innerText = eur.description;
+                document.getElementById("tdeurratefloat").innerText = eur.rate_float;
+            }
+        </script>
+    </body>
+</html>

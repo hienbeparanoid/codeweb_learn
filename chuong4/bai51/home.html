@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>tieu de trang</title>
+        <style type="text/css">
+            @import url(mainstyle.css);
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <img src="images/Logo.gif" alt="">
+            <h1>Newborn Registration</h1>
+        </div>
+        <form action="">
+            <table>
+                <tr>
+                    <td>Date:</td>
+                    <td colspan="2"><input type="date" name="date"></td>
+                </tr>
+
+                <!-- Row 2: Infant's Name -->
+                <tr>
+                    <td>1) Infant's first name:</td>
+                    <td><input type="text" name="infant_first_name"></td>
+                    <td>Last: <input type="text" name="infant_last_name"></td>
+                </tr>
+
+                <!-- Row 3: Medical Record # -->
+                <tr>
+                    <td>2) Medical Record #:</td>
+                    <td colspan="2"><input type="text" name="medical_record"></td>
+                </tr>
+
+                <!-- Row 4: Date of birth -->
+                <tr>
+                    <td>3) Date of birth:</td>
+                    <td colspan="2"><input type="date" name="dob"></td>
+                </tr>
+
+                <!-- Row 5: Birth weight -->
+                <tr>
+                    <td>4) Birth weight:</td>
+                    <td colspan="2"><input type="text" name="birth_weight"></td>
+                </tr>
+
+                <!-- Row 6: APGAR score -->
+                <tr>
+                    <td>5) APGAR score:</td>
+                    <td colspan="2"><input type="text" name="apgar_score"></td>
+                </tr>
+
+                <!-- Row 7: Mother's Name -->
+                <tr>
+                    <td>6) Mother's first name:</td>
+                    <td><input type="text" name="mother_first_name"></td>
+                    <td>Last: <input type="text" name="mother_last_name"></td>
+                </tr>
+
+                <!-- Row 8: Father's Name -->
+                <tr>
+                    <td>7) Father's first name:</td>
+                    <td><input type="text" name="father_first_name"></td>
+                    <td>Last: <input type="text" name="father_last_name"></td>
+                </tr>
+
+                <!-- Row 9: Physician -->
+                <tr>
+                    <td>8) Physician (check all that apply):</td>
+                    <td colspan="2">
+                        <select name="physician" multiple size="4">
+                            <option>Dr. Warren Albert</option>
+                            <option>Dr. Maria Alvarez</option>
+                            <option>Dr. Karen Brinkman</option>
+                            <option>Dr. Micheal Kerry</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <!-- Row 10: Buttons -->
+                <tr>
+                    <td colspan="3" class="buttons">
+                        <button type="submit">Register</button>
+                        <button type="reset">Cancel</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

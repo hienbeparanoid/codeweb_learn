@@ -1,0 +1,78 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>tieu de trang</title>
+        <script>
+            datasets=[
+                {"productid":"sp1","productname":"coca","price":15},
+                {"productid":"sp2","productname":"pepsi","price":10},
+                {"productid":"sp3","productname":"sting","price":20},
+                {"productid":"sp4","productname":"redbull","price":25},
+                {"productid":"sp5","productname":"monster","price":30}
+            ]
+        </script>
+        <style>
+            thead,tfoot
+            {
+            background-color:blue;
+            color:white;
+            }
+            tbody tr:nth-child(2n+1)
+            {
+            background-color:whitesmoke
+            }
+            tbody tr:nth-child(2n) {
+            background-color: pink
+            }
+        </style>
+    </head>
+    <body>
+        <h1>list product</h1>
+        <table border="1">
+            <caption>Products</caption>
+            <thead>
+                <tr>
+                    <th>ProductId</th>
+                    <th>ProductName</th>
+                    <th>Prices</th>
+                </tr>
+            </thead>
+            <tbody id="tbodyproduct">
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3">Thiết kế bởi tèo</td>
+                </tr>
+            </tfoot>
+        </table>
+        <script>
+            function loadData()
+            {
+                //truy suất lấy tbodyproduct
+                tbodyproduct=document.getElementById("tbodyproduct")
+                for(i=0;i<datasets.length;i++){
+                    product=datasets[i]
+                    //tạo đối tượng tr:
+                    tr=document.createElement("tr")
+                    //đưa tr vào tbodyproduct
+                    tbodyproduct.append(tr)
+                    //tạo 3 td để lưu productid, name, price
+                    tdid=document.createElement("td")
+                    tdid.innerText=product.productid
+                    //đưa tdid vào tr
+                    tr.append(tdid)
+                    tdname=document.createElement("td")
+                    tdname.innerText=product.productname
+                    //đưa tdname vào tr
+                    tr.append(tdname)
+                    tdprice=document.createElement("td")
+                    tdprice.innerText=product.price
+                    //đưa tdprice vào tr
+                    tr.append(tdprice)
+                }
+            }
+            loadData()
+        </script>
+    </body>
+</html>

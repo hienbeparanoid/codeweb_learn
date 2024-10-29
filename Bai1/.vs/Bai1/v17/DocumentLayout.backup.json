@@ -1,0 +1,38 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Documents\\University Study Materials\\Third year\\Web kd\\execise_code\\Bai1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6B3EBA83-EA64-4671-A256-ECECA88C3E9A}|Bai1\\Bai1.csproj|d:\\documents\\university study materials\\third year\\web kd\\execise_code\\bai1\\bai1\\pages\\home.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6B3EBA83-EA64-4671-A256-ECECA88C3E9A}|Bai1\\Bai1.csproj|solutionrelative:bai1\\pages\\home.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "home.html",
+              "DocumentMoniker": "D:\\Documents\\University Study Materials\\Third year\\Web kd\\execise_code\\Bai1\\Bai1\\Pages\\home.html",
+              "RelativeDocumentMoniker": "Bai1\\Pages\\home.html",
+              "ToolTip": "D:\\Documents\\University Study Materials\\Third year\\Web kd\\execise_code\\Bai1\\Bai1\\Pages\\home.html",
+              "RelativeToolTip": "Bai1\\Pages\\home.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-09-02T18:19:47.947Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+    "products":
+    [
+        {
+            "productid": 1,
+            "productname": "Iphone 12",
+            "price": 1000
+        },
+        {
+            "productid": 2,
+            "productname": "Samsung Galaxy S21",
+            "price": 900
+        },
+        {
+            "productid": 3,
+            "productname": "Xiaomi Mi 11",
+            "price": 800
+        }
+    ]
+}

@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>tieu de trang</title>
+    </head>
+    <body>
+        <form action="tongcong.html" method="get">
+            <table style="text-align: center;">
+                <tr>
+                    <th>Part number</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Qty</th>
+                    <th>Item table</th>
+                </tr>
+                <tr>
+                    <td>C112</td>
+                    <td>Chuột Quang</td>
+                    <td>19.95$</td>
+                    <td><input type="number" name="qty1" min="0" value="0" oninput="calculateTotal()"></td>
+                    <td><input type="number" name="item_table"></td>
+                </tr>
+                <tr>
+                    <td>B124</td>
+                    <td>Bàn phím</td>
+                    <td>49.95$</td>
+                    <td><input type="number" name="qty2" min="0" value="0" oninput="calculateTotal()"></td>
+                    <td><input type="number" name="item_table"></td>
+                </tr>
+                <tr>
+                    <td>U125</td>
+                    <td>USB KingMax</td>
+                    <td>29.95$</td>
+                    <td><input type="number" name="qty3" min="0" value="0" oninput="calculateTotal()"></td>
+                    <td><input type="number" name="item_table"></td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <hr>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5" style="text-align: right;">Total 
+                        <input type="number" name="grand_total" id="grand_total" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5" style="text-align: right;"><input type="submit" value="Tổng cộng"></td>
+                </tr>
+            </table>
+        </form>
+
+        <script>
+            function calculateTotal() {
+                const prices = [19.95, 49.95, 29.95];
+                const qty1 = document.querySelector('input[name="qty1"]').value;
+                const qty2 = document.querySelector('input[name="qty2"]').value;
+                const qty3 = document.querySelector('input[name="qty3"]').value;
+
+                const total1 = qty1 * prices[0];
+                const total2 = qty2 * prices[1];
+                const total3 = qty3 * prices[2];
+
+                const grandTotal = total1 + total2 + total3;
+                document.getElementById('grand_total').value = grandTotal.toFixed(2);
+            }
+        </script>
+    </body>
+</html>

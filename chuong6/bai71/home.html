@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>User Info Display</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+        }
+        td {
+            border: 1px solid black;
+            text-align: left;
+        }
+        th {
+            border: 1px solid black;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>User Information</h2>
+    <table id="userTable">
+        <tr>
+            <th>Field</th>
+            <th>Information</th>
+        </tr>
+    </table>
+
+    <script>
+        // Define the user object
+        var user = {
+            "id": "100005823642721",
+            "first_name": "Duy Thanh",
+            "gender": "male",
+            "last_name": "Trần",
+            "link": "https://www.facebook.com/duythanhcse",
+            "locale": "en_US",
+            "birthday": "20/12/1961",
+            "name": "Duy Thanh Trần",
+            "username": "duythanhcse"
+        };
+
+        // Get the table element
+        var table = document.getElementById('userTable');
+
+        // Function to add a row to the table
+        function addRow(field, value) {
+            var row = table.insertRow();
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            cell1.textContent = field;
+            cell2.textContent = value;
+        }
+
+        // Add user details to the table
+        addRow("ID", user.id);
+        addRow("First Name", user.first_name);
+        addRow("Last Name", user.last_name);
+        addRow("Gender", user.gender);
+        addRow("Profile Link", user.link);
+        addRow("Locale", user.locale);
+        addRow("Birthday", user.birthday);
+        addRow("Full Name", user.name);
+        addRow("Username", user.username);
+    </script>
+
+</body>
+</html>

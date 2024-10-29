@@ -1,0 +1,149 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>tieu de trang</title>
+        <style>
+            body{
+                background-color: #000080;
+            }
+            h1 {
+                color: white;
+                text-align: center;
+            }
+            table {
+                color: white;
+            }
+            td{
+                padding: 5px;
+            }
+        </style>
+        <script>
+            // Hàm hiển thị ngày hiện hành khi trang load
+            function displayTodayDate() {
+                const today = new Date();
+                const date = today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.getFullYear();
+                document.getElementById("todayDate").value = date;
+                document.getElementById("firstName").focus();
+            }
+
+            // Kiểm tra chọn mục 'Other' trong Physician
+            function checkPhysician() {
+                const physician = document.getElementById("physician").value;
+                const otherInput = document.getElementById("otherPhysician");
+                if (physician === "Other" && otherInput.value.trim() === "") {
+                    alert("Please enter the name of the physician.");
+                }
+            }
+
+            // Kiểm tra giá trị từ 0 đến 2 cho các ô và tính tổng
+            function validateAndCalculateTotal() {
+                const fields = ["activity", "pulse", "grimace", "appearance", "respiration"];
+                let total = 0;
+                let hasError = false;
+
+                for (let i = 0; i < fields.length; i++) {
+                    const value = parseInt(document.getElementById(fields[i]).value);
+
+                    // Nếu giá trị không hợp lệ, hiển thị thông báo và dừng lại
+                    if (isNaN(value) || value < 0 || value > 2) {
+                        alert("Please enter a value between 0 and 2 for " + fields[i]);
+                        hasError = true;
+                        break;
+                    } else {
+                        total += value;
+                    }
+                }
+
+                // Chỉ cập nhật tổng khi không có lỗi
+                if (!hasError) {
+                    document.getElementById("total").value = total;
+                }
+            }
+        </script>
+    </head>
+    <body onload="displayTodayDate()">
+        <div align="center">
+            <img src="images/Logo.gif" alt="">
+        </div>
+        <h1>Neonatal Feeding Study</h1>
+        <form>
+            <table>
+                <tr>
+                    <td colspan="3" style="text-align: right;">Today is:
+                        <input type="text" id="todayDate" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1) Name (first, last)</td>
+                    <td colspan="2">
+                        <input type="text" id="firstName"> <input type="text" id="lastName">
+                    </td>
+                </tr>
+                <tr>
+                    <td>2) Medical Record#</td>
+                    <td><input type="text" id="medicalRecord"></td>
+                </tr>
+                <tr>
+                    <td>3) Date of birth</td>
+                    <td><input type="date" id="dob"></td>
+                </tr>
+                <tr>
+                    <td>4) Physician</td>
+                    <td>
+                        <select id="physician" onblur="checkPhysician()">
+                            <option value="Dr.Warren Albert">Dr. Warren Albert</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>If other (specify)</td>
+                    <td><input type="text" id="otherPhysician"></td>
+                </tr>
+                <tr>
+                    <td rowspan="6" style="vertical-align: top;">5) 1 Minute APGAR Score: <br>
+                        Each score must be 0, 1, or 2
+                    </td>
+                    <td>Activity</td>
+                    <td><input type="number" id="activity" min="0" max="2" oninput="validateAndCalculateTotal()"></td>
+                </tr>
+                <tr>
+                    <td>Pulse</td>
+                    <td><input type="number" id="pulse" min="0" max="2" oninput="validateAndCalculateTotal()"></td>
+                </tr>
+                <tr>
+                    <td>Grimace (Reflex, Irritability)</td>
+                    <td><input type="number" id="grimace" min="0" max="2" oninput="validateAndCalculateTotal()"></td>
+                </tr>
+                <tr>
+                    <td>Appearance (Skin, Color)</td>
+                    <td><input type="number" id="appearance" min="0" max="2" oninput="validateAndCalculateTotal()"></td>
+                </tr>
+                <tr>
+                    <td>Respiration</td>
+                    <td><input type="number" id="respiration" min="0" max="2" oninput="validateAndCalculateTotal()"></td>
+                </tr>
+                <tr>
+                    <td><b>TOTAL</b></td>
+                    <td><input type="number" id="total" readonly></td>
+                </tr>
+                <tr>
+                    <td>Birth weight (gms): <br>
+                        Weights must be >= 1200 gms
+                    </td>
+                    <td><input type="number" id="birthWeight" min="1200"></td>
+                </tr>
+                <tr>
+                    <td>Parental Consent (Required):</td>
+                    <td><input type="checkbox" id="parentalConsent"></td>
+                </tr>
+                <tr>
+                    <td colspan="3" style="text-align: center;">
+                        <input type="button" value="Register">
+                        <input type="reset" value="Reload Page">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

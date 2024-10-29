@@ -1,0 +1,139 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffeb99;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 960px;
+    margin: 0 auto;
+    background-color: #ffeb99;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+header h1 {
+    font-family: 'Times New Roman', serif;
+    font-size: 36px;
+    color: #660000;
+}
+
+.weather-forecast {
+    background-color: #ffffcc;
+    padding: 10px;
+    border: 2px solid #c0c0c0;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.weather-forecast a {
+    color: blue;
+    font-weight: bold;
+}
+
+.weather-forecast a:hover {
+    color: red;
+}
+
+main {
+    float: left;
+    width: 65%;
+}
+
+.news-item {
+    margin-bottom: 30px;
+}
+
+.news-item h2 {
+    color: #6600cc;
+    font-size: 24px;
+}
+
+.news-item p {
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+.news-image {
+    float: right;
+    margin-right: 20px;
+    border: 2px solid #e59400;
+    padding: 5px;
+}
+
+.news-image2 {
+    float: left;
+    margin-right: 20px;
+    padding: 5px;
+}
+
+aside {
+    float: right;
+    width: 30%;
+    background-color: #ccff99;
+    padding: 20px;
+    border: 2px solid #00cc66;
+    margin-left: 20px;
+}
+
+aside h3 {
+    color: #6600cc;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+aside h5 {
+    color: #6600cc;
+}
+
+aside ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+aside ul li {
+    margin: 5px 0;
+}
+
+aside ul li a {
+    color: #0066cc;
+}
+
+aside ul li a:hover {
+    color: red;
+}
+
+footer {
+    clear: both;
+    padding-top: 20px;
+    font-size: 14px;
+}
+
+footer h3 {
+    color: #6600cc;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+footer ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+footer ul li {
+    margin: 5px 0;
+}
+
+footer ul li a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+footer ul li a:hover {
+    text-decoration: underline;
+}

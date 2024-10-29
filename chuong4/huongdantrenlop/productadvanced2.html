@@ -1,0 +1,169 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>tieu de trang</title>
+        <script>
+            datasets=[
+                {"productid":"sp1","productname":"coca","price":15,"picture_small":"images/coca1.jpg","picture_big":"images/coca2.jpg"},
+                {"productid":"sp2","productname":"pepsi","price":10,"picture_small":"images/pepsi1.jpg","picture_big":"images/pepsi2.jpg"},
+                {"productid":"sp3","productname":"sting","price":20,"picture_small":"images/sting1.jpg","picture_big":"images/sting2.jpg"},
+                {"productid":"sp4","productname":"redbull","price":25,"picture_small":"images/redbull1.jpg","picture_big":"images/redbull2.jpg"},
+                {"productid":"sp5","productname":"monster","price":30,"picture_small":"images/monster1.jpg","picture_big":"images/monster2.jpg"}
+            ]
+        </script>
+        <style>
+            /* Modal styles */
+            #modal {
+                display: none; 
+                position: fixed; 
+                z-index: 1; 
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0,0,0,0.8);
+            }
+
+            #modal img {
+                margin: auto;
+                display: block;
+                width: 50%;
+                height: auto;
+            }
+
+            #modalClose {
+                position: absolute;
+                top: 20px;
+                right: 30px;
+                color: white;
+                font-size: 30px;
+                cursor: pointer;
+            }
+
+            /* Trash icon style */
+            .trash-icon {
+                cursor: pointer;
+                color: red;
+                font-size: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>list product</h1>
+        <table border="1">
+            <caption>Products</caption>
+            <thead>
+                <tr>
+                    <th>ProductId</th>
+                    <th>ProductName</th>
+                    <th>Prices</th>
+                    <th>Images</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody id="tbodyproduct">
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="5">Thiết kế bởi tèo</td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <!-- Modal to show large image -->
+        <div id="modal">
+            <span id="modalClose">&times;</span>
+            <img id="modalImage">
+        </div>
+
+        <script>
+            function loadData() {
+                // Retrieve tbodyproduct
+                tbodyproduct = document.getElementById("tbodyproduct");
+                for (i = 0; i < datasets.length; i++) {
+                    product = datasets[i];
+                    // Create tr element
+                    tr = document.createElement("tr");
+                    tr.setAttribute("data-id", product.productid); // Add data-id to each row for identification
+                    // Append tr to tbodyproduct
+                    tbodyproduct.append(tr);
+
+                    // Create td for productid, productname, and price
+                    tdid = document.createElement("td");
+                    tdid.innerText = product.productid;
+                    tr.append(tdid);
+
+                    tdname = document.createElement("td");
+                    tdname.innerText = product.productname;
+                    tr.append(tdname);
+
+                    tdprice = document.createElement("td");
+                    tdprice.innerText = product.price;
+                    tr.append(tdprice);
+
+                    // Create image element for the product
+                    img = document.createElement("img");
+                    img.setAttribute("src", product.picture_small);
+                    img.setAttribute("width", "100");
+                    img.setAttribute("height", "100");
+                    img.setAttribute("data-big", product.picture_big); // Add data attribute for big image
+
+                    // Add click event to open the large image
+                    img.addEventListener("click", function () {
+                        openModal(this.getAttribute("data-big"));
+                    });
+
+                    // Create td to contain the image
+                    tdimg = document.createElement("td");
+                    tdimg.append(img);
+                    tr.append(tdimg);
+
+                    // Create delete icon (trash)
+                    trashIcon = document.createElement("span");
+                    trashIcon.innerHTML = "&#128465;"; // Unicode for trash icon
+                    trashIcon.className = "trash-icon";
+                    trashIcon.setAttribute("data-id", product.productid); // Add data-id for identification
+
+                    // Add click event to handle row deletion
+                    trashIcon.addEventListener("click", function () {
+                        confirmDelete(this.getAttribute("data-id"));
+                    });
+
+                    // Create td to contain the trash icon
+                    tdtrash = document.createElement("td");
+                    tdtrash.append(trashIcon);
+                    tr.append(tdtrash);
+                }
+            }
+
+            // Function to open modal with large image
+            function openModal(imageSrc) {
+                var modal = document.getElementById("modal");
+                var modalImg = document.getElementById("modalImage");
+                modalImg.src = imageSrc; // Set large image in the modal
+                modal.style.display = "block"; // Show modal
+            }
+
+            // Function to confirm and delete row
+            function confirmDelete(productId) {
+                var confirmed = confirm("Are you sure you want to delete this product?");
+                if (confirmed) {
+                    var row = document.querySelector(`tr[data-id='${productId}']`);
+                    if (row) {
+                        row.remove(); // Remove the row from the table
+                        alert(`Product ${productId} has been deleted.`);
+                    }
+                }
+            }
+
+            // Close modal when user clicks on the close button
+            document.getElementById("modalClose").onclick = function () {
+                document.getElementById("modal").style.display = "none";
+            };
+
+            // Load the product data
+            loadData();
+        </script>
+    </body>
+</html>

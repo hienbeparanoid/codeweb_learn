@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>tieu de trang</title>
+        <style>
+            td{
+                width: 50%;
+            }
+            th{
+                background-color: lightblue;
+            }
+            tr:nth-child(2n+1)
+            {
+                background-color: plum
+            }
+            tr:nth-child(2n) {
+                background-color: pink
+            }
+        </style>
+
+        <script>
+            function handleMouseOver(event) {
+                event.target.closest('tr').style.backgroundColor = 'yellow';
+            }
+
+            function handleMouseLeave(event) {
+                const row = event.target.closest('tr');
+                if (row.rowIndex % 2 === 0) {
+                    row.style.backgroundColor = 'pink';
+                } else {
+                    row.style.backgroundColor = 'plum';
+                }
+            }
+
+            function addMouseEvents() {
+                const rows = document.querySelectorAll('table tr');
+
+                rows.forEach(row => {
+                    row.addEventListener('mouseover', handleMouseOver);
+                    row.addEventListener('mouseleave', handleMouseLeave);
+                });
+            }
+
+            window.onload = addMouseEvents;
+        </script>
+    </head>
+    <body>
+        <table border="1">
+            <tr>
+                <th>STT</th>
+                <th>Tên</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Nguyễn Thị Tư</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Trần Văn Kỷ</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Hồ văn Năng</td>
+            </tr>
+        </table>
+    </body>
+</html>

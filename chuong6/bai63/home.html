@@ -1,0 +1,174 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>tieu de trang</title>
+        <style>
+            th, td {
+                width: 150px;
+                text-align: center;
+            }
+
+            .color-option {
+                display: inline-block;
+            }
+
+            .color1 {
+                background-color: aqua;
+            }
+            .color2 {
+                background-color: red;
+            }
+            .color3 {
+                background-color: yellow;
+            }
+            .color4 {
+                background-color: green;
+            }
+            .color5 {
+                background-color: purple;
+            }
+
+            th {
+                background-color: lightblue;
+            }
+            tr.hover {
+                background-color: yellow;
+            }
+        </style>
+        <script>
+            // Load combo data for day, month, year
+            window.onload = function() {
+                loadDays();
+                loadMonths();
+                loadYears();
+            };
+
+            function loadDays() {
+                let daySelect = document.getElementById("day");
+                for (let i = 1; i <= 31; i++) {
+                    let option = document.createElement("option");
+                    option.value = i;
+                    option.text = i;
+                    daySelect.appendChild(option);
+                }
+            }
+
+            function loadMonths() {
+                let monthSelect = document.getElementById("month");
+                for (let i = 1; i <= 12; i++) {
+                    let option = document.createElement("option");
+                    option.value = i;
+                    option.text = i;
+                    monthSelect.appendChild(option);
+                }
+            }
+
+            function loadYears() {
+                let yearSelect = document.getElementById("year");
+                let currentYear = new Date().getFullYear();
+                for (let i = currentYear; i >= 1900; i--) {
+                    let option = document.createElement("option");
+                    option.value = i;
+                    option.text = i;
+                    yearSelect.appendChild(option);
+                }
+            }
+
+            // Form validation
+            function register() {
+                let name = document.getElementById("name").value;
+                let email = document.getElementById("email").value;
+                let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                if (name === "") {
+                    alert("Tên không được bỏ trống.");
+                    return false;
+                }
+                if (!emailPattern.test(email)) {
+                    alert("Email không hợp lệ.");
+                    return false;
+                }
+
+                // Add data to the table
+                addToTable();
+            }
+
+            function addToTable() {
+                let table = document.getElementById("userTable");
+                let row = table.insertRow(-1);
+
+                row.onmouseover = function() {
+                    row.style.backgroundColor = "yellow";
+                };
+                row.onmouseout = function() {
+                    row.style.backgroundColor = "white";
+                };
+
+                let name = document.getElementById("name").value;
+                let email = document.getElementById("email").value;
+                let gender = document.querySelector('input[name="gender"]:checked').value;
+                let year = document.getElementById("year").value;
+                let hobbies = Array.from(document.querySelectorAll('input[name="hobby"]:checked'))
+                    .map(hobby => hobby.nextSibling.nodeValue.trim())
+                    .join(", ");
+                let favoriteColor = document.querySelector('input[name="color"]:checked').nextElementSibling.textContent;
+
+                row.insertCell(0).innerHTML = name;
+                row.insertCell(1).innerHTML = email;
+                row.insertCell(2).innerHTML = gender;
+                row.insertCell(3).innerHTML = year;
+                row.insertCell(4).innerHTML = hobbies;
+                row.insertCell(5).innerHTML = favoriteColor;
+            }
+
+            // Reset form and focus on Name
+            function resetForm() {
+                document.getElementById("registrationForm").reset();
+                document.getElementById("name").focus();
+            }
+        </script>
+    </head>
+    <body>
+        <form id="registrationForm">
+            <h1>Đăng ký thành viên</h1>
+            <hr>
+            <p>Tên(*) <input type="text" id="name"></p>
+            <p>
+                Ngày sinh(*) 
+                Ngày: <select id="day"></select>
+                Tháng: <select id="month"></select>
+                Năm: <select id="year"></select>
+            </p>
+            <p>Giới tính 
+                <label><input type="radio" name="gender" value="Nam"> Nam</label> 
+                <label><input type="radio" name="gender" value="Nữ"> Nữ</label>
+            </p>
+            <p>Email(*) <input type="email" id="email"></p>
+            <p>Sở thích của bạn</p>
+            <label><input type="checkbox" name="hobby"> Mua sắm</label> <br>
+            <label><input type="checkbox" name="hobby"> Du lịch</label> <br>
+            <label><input type="checkbox" name="hobby"> Tán gẫu</label> <br>
+            <label><input type="checkbox" name="hobby"> Đọc sách</label> <br>
+            <label><input type="checkbox" name="hobby"> Nghe nhạc</label>
+            <p>Màu yêu thích của bạn</p>
+            <label><input type="radio" name="color"> <span class="color-option color1">Màu xanh da trời</span></label><br>
+            <label><input type="radio" name="color"> <span class="color-option color2">Màu đỏ</span></label><br>
+            <label><input type="radio" name="color"> <span class="color-option color3">Màu vàng</span></label><br>
+            <label><input type="radio" name="color"> <span class="color-option color4">Màu xanh lá cây</span></label><br>
+            <label><input type="radio" name="color"> <span class="color-option color5">Màu tím</span></label><br>
+            <input type="button" value="Đăng ký" onclick="register()">
+            <input type="button" value="Tiếp" onclick="resetForm()"> 
+            <br>
+            <table border="1" id="userTable">
+                <tr>
+                    <th>Tên</th>
+                    <th>Email</th>
+                    <th>Giới tính</th>
+                    <th>Năm sinh</th>
+                    <th>Sở thích</th>
+                    <th>Màu yêu thích</th>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

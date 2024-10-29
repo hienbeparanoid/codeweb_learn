@@ -1,0 +1,111 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Danh sách điểm sinh viên</title>
+        <style>
+            td {
+                padding: 2px;
+            }
+        </style>
+        <script>
+            let sinhViens = []; // Mảng toàn cục để lưu danh sách sinh viên
+
+            // Hàm tính điểm trung bình
+            function tinhDiemTrungBinh(monHocs) {
+                let tongDiem = 0;
+                monHocs.forEach(mon => {
+                    tongDiem += mon.Diem;
+                });
+                return (tongDiem / monHocs.length).toFixed(2); // Làm tròn 2 chữ số
+            }
+
+            // Hàm xác định kết quả đỗ hay trượt
+            function ketQua(diemTrungBinh) {
+                return diemTrungBinh >= 5 ? "Đỗ" : "Trượt";
+            }
+
+            // Hàm hiển thị dữ liệu lên bảng
+            function displayStudents(sinhViens) {
+                const table = document.querySelector("table"); // Lấy bảng
+                // Xóa tất cả các hàng trừ hàng tiêu đề
+                const rows = table.querySelectorAll("tr:not(:first-child):not(:nth-child(2))");
+                rows.forEach(row => row.remove());
+
+                sinhViens.forEach(sinhVien => {
+                    const tr = document.createElement("tr");
+
+                    // Thêm cột Mã sinh viên
+                    const tdMa = document.createElement("td");
+                    tdMa.innerText = sinhVien.Ma;
+                    tr.appendChild(tdMa);
+
+                    // Thêm cột Tên sinh viên
+                    const tdTen = document.createElement("td");
+                    tdTen.innerText = sinhVien.Ten;
+                    tr.appendChild(tdTen);
+
+                    // Thêm điểm các môn
+                    sinhVien.MonHocs.forEach(mon => {
+                        const tdDiem = document.createElement("td");
+                        tdDiem.innerText = mon.Diem;
+                        tr.appendChild(tdDiem);
+                    });
+
+                    // Tính và thêm cột Điểm trung bình
+                    const diemTrungBinh = tinhDiemTrungBinh(sinhVien.MonHocs);
+                    const tdTrungBinh = document.createElement("td");
+                    tdTrungBinh.innerText = diemTrungBinh;
+                    tr.appendChild(tdTrungBinh);
+
+                    // Xác định và thêm cột Kết quả
+                    const tdKetQua = document.createElement("td");
+                    tdKetQua.innerText = ketQua(diemTrungBinh);
+                    tr.appendChild(tdKetQua);
+
+                    // Thêm dòng vào bảng
+                    table.appendChild(tr);
+                });
+            }
+
+            // Hàm đọc dữ liệu từ file JSON bằng AJAX
+            function loadJSON() {
+                const xhr = new XMLHttpRequest();
+                xhr.open("GET", "databaseSinhVien.json", true);
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        sinhViens = JSON.parse(xhr.responseText); // Parse JSON thành đối tượng JavaScript
+                        displayStudents(sinhViens); // Hiển thị dữ liệu lên bảng
+                    }
+                };
+                xhr.send(); // Gửi request
+            }
+
+            // Hàm tìm kiếm sinh viên
+            function searchStudent() {
+                const keyword = document.getElementById("searchInput").value.toLowerCase(); // Lấy từ khóa tìm kiếm và chuyển về chữ thường
+                const filteredStudents = sinhViens.filter(sinhVien => 
+                    sinhVien.Ma.toLowerCase().includes(keyword) || 
+                    sinhVien.Ten.toLowerCase().includes(keyword)
+                ); // Lọc sinh viên dựa trên từ khóa
+                displayStudents(filteredStudents); // Hiển thị danh sách sinh viên được lọc
+            }
+        </script>
+    </head>
+    <body onload="loadJSON()">
+        <p>Muốn tìm gì: <input type="text" id="searchInput" onkeyup="searchStudent()"></p>
+        <table border="1">
+            <tr>
+                <td rowspan="2">Mã sinh viên</td>
+                <td rowspan="2">Tên sinh viên</td>
+                <td colspan="3">Điểm thành phần</td>
+                <td rowspan="2">Điểm trung bình</td>
+                <td rowspan="2">Kết quả</td>
+            </tr>
+            <tr>
+                <td>Toán</td>
+                <td>Lý</td>
+                <td>Hóa</td>
+            </tr>
+        </table>
+    </body>
+</html>

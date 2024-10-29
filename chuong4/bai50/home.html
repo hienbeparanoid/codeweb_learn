@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>tieu de trang</title>
+        <style type="text/css">
+            @import url(mainstyle.css);
+        </style>
+    </head>
+    <body>
+        <h1>Online Classifields Search Form</h1>
+        <hr>
+        <form action="">
+            <table>
+                <tr>
+                    <td><p><b>1) Search for a classified in the following sections</b></p></td>
+                </tr>
+                <table>
+                    <tr>
+                        <td><input type="radio" name="search_for" value="Employment">Employment</td>
+                        <td><input type="radio" name="search_for" value="Personal">Personal</td>
+                    </tr>
+                    <tr>
+                        <td><input type="radio" name="search_for" value="For-sale">For-sale</td>
+                        <td><input type="radio" name="search_for" value="Miscellanecus">Miscellanecus</td>
+                    </tr>
+                    <tr>
+                        <td><input type="radio" name="search_for" value="Housing">Housing</td>
+                        <td><input type="radio" name="search_for" value="all">All of the above</td>
+                    </tr>
+                </table>
+                <tr>
+                    <td><p><b>2) Search for the following publications</b></p></td>
+                </tr>
+                <table>
+                    <tr>
+                        <td><input type="checkbox" name="publications" value="MW">Midwest times</td>
+                        <td><input type="checkbox" name="publications" value="MN">Modern News</td>
+                        <td><input type="checkbox" name="publications" value="ET">Employment Today</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="publications" value="GL">Great Lakes Classifields</td>
+                        <td><input type="checkbox" name="publications" value="MD">Middleton Daily</td>
+                        <td><input type="checkbox" name="publications" value="CDN">Cashtown Daily News</td>
+                    </tr>
+                </table>
+                <tr>
+                    <td colspan="2"><b>3) From to:</b></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="date" name="from_date"> to <input type="date" name="to_date">
+                    </td>
+                </tr>
+                <br>
+                <tr>
+                    <td colspan="2"><b>4) Enter a few keywords to describe the classified:</b></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="text" name="keywords" style="width: 100%;">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"><b>5) Click one of the options below:</b></td>
+                </tr>
+                <br>
+                <tr>
+                    <td colspan="2" class="buttons">
+                        <a href="#" onclick="alert('Searching... (giả lập search)')"><button type="submit"><img src="images/Search.gif" alt=""></button></a>
+                        <a href="https://tranduythanh.com" target="_blank"><button type="button"><img src="images/Help.gif" alt=""></button></a>
+                        <button type="reset"><img src="images/Cancel.gif" alt=""></button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

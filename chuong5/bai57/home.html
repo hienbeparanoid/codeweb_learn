@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>tieu de trang</title>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <th>Mã sản phẩm</th>
+                <th>Tên sản phẩm</th>
+                <th>Gía</th>
+                <th>Số lượng</th>
+                <th>Thành tiền</th>
+            </tr>
+            <tr>
+                <td>C112</td>
+                <td>Chuột Quang</td>
+                <td>19.95$</td>
+                <td><input type="number" id="qty1" min="0" value="0" oninput="calculateSubtotal(1)"></td>
+                <td><input type="number" id="thanhtien1" readonly></td>
+            </tr>
+            <tr>
+                <td>B124</td>
+                <td>Bàn phím</td>
+                <td>49.95$</td>
+                <td><input type="number" id="qty2" min="0" value="0" oninput="calculateSubtotal(2)"></td>
+                <td><input type="number" id="thanhtien2" readonly></td>
+            </tr>
+            <tr>
+                <td>U125</td>
+                <td>USB KingMax</td>
+                <td>29.95$</td>
+                <td><input type="number" id="qty3" min="0" value="0" oninput="calculateSubtotal(3)"></td>
+                <td><input type="number" id="thanhtien3" readonly></td>
+            </tr>
+            <tr>
+                <td colspan="5"><hr></td>
+            </tr>
+            <tr>
+                <td colspan="5" style="text-align: right;">Total: 
+                    <input type="number" id="grand_total" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5" style="text-align: right;">
+                    <input type="button" value="Tổng cộng" onclick="calculateTotal()">
+                </td>
+            </tr>
+        </table>
+
+        <script>
+            // Tính thành tiền cho từng sản phẩm
+            function calculateSubtotal(item) {
+                const price1 = 19.95;
+                const price2 = 49.95;
+                const price3 = 29.95;
+
+                let qty, subtotal;
+
+                switch (item) {
+                    case 1:
+                        qty = parseFloat(document.getElementById("qty1").value);
+                        subtotal = qty * price1;
+                        document.getElementById("thanhtien1").value = subtotal.toFixed(2);
+                        break;
+                    case 2:
+                        qty = parseFloat(document.getElementById("qty2").value);
+                        subtotal = qty * price2;
+                        document.getElementById("thanhtien2").value = subtotal.toFixed(2);
+                        break;
+                    case 3:
+                        qty = parseFloat(document.getElementById("qty3").value);
+                        subtotal = qty * price3;
+                        document.getElementById("thanhtien3").value = subtotal.toFixed(2);
+                        break;
+                }
+            }
+
+            // Tính tổng tiền
+            function calculateTotal() {
+                const thanhtien1 = parseFloat(document.getElementById("thanhtien1").value) || 0;
+                const thanhtien2 = parseFloat(document.getElementById("thanhtien2").value) || 0;
+                const thanhtien3 = parseFloat(document.getElementById("thanhtien3").value) || 0;
+
+                const grandTotal = thanhtien1 + thanhtien2 + thanhtien3;
+                document.getElementById("grand_total").value = grandTotal.toFixed(2);
+            }
+        </script>
+    </body>
+</html>

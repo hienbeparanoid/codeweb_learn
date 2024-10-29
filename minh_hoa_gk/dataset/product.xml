@@ -1,0 +1,17 @@
+<products>
+    <product>
+        <productid>SP1</productid>
+        <productname>Product 1</productname>
+        <price>100</price>
+    </product>
+    <product>
+        <productid>SP2</productid>
+        <productname>Product 2</productname>
+        <price>200</price>
+    </product>
+    <product>
+        <productid>SP3</productid>
+        <productname>Product 3</productname>
+        <price>300</price>
+    </product>
+</products>

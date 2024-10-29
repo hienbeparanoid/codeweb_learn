@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>tieu de trang</title>
+    </head>
+    <body>
+        <form action="data.html" method="get">
+            <table>
+                <tr>
+                    <td>Họ và tên</td>
+                    <td><input type="text" name="name"></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input type="email" name="email"></td>
+                </tr>
+                <tr>
+                    <td>Giới tính:</td>
+                    <td> 
+                        <input type="radio" name="gender" value="nam"> Nam
+                        <input type="radio" name="gender" value="nu"> Nữ
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="checkbox" name="stable_job" value="yes">Tôi đã có nghề nghiệp ổn định</td>
+                </tr>
+                <tr>
+                    <td>Đến từ:</td>
+                    <td style="vertical-align: top;">
+                        <select name="from" id="from">
+                            <option value="mienbac">Miền Bắc</option>
+                            <option value="mientrung">Miền Trung</option>
+                            <option value="miennam">Miền Nam</option>
+                            <option value="mientay">Miền Tây</option>
+                        </select>
+                </tr>
+                <tr>
+                    <td colspan="2">Nội dung cần liên hệ chúng tôi</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><textarea rows="6" cols="50" name="message">Nội dung viết vào đây</textarea></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: right;">
+                        <input type="submit" value="Gửi thông điệp"> 
+                        <input type="reset" value="Nhập lại tất cả">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

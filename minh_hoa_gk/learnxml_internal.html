@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>tieu de trang</title>
+        <script type="text/javascript">
+            var txt="<bookstore><book>"; 
+            txt +=     "<title>Everyday Italian</title>"; 
+            txt +=     "<author>Giada De Laurentiis</author>"; 
+            txt +=     "<year>2005</year>"; 
+            txt +=   "</book></bookstore>";
+        </script>
+            
+    </head>
+    <body>
+        <table>
+            <tr>
+                <td>Title</td>
+                <td id="tdtitle"></td>
+            </tr>
+            <tr>
+                <td>Author</td>
+                <td id="tdauthor"></td>
+            </tr>
+            <tr>
+                <td>Year:</td>
+                <td id="tdyear"></td>
+            </tr>
+        </table>
+        <script>
+            //XML DOM
+            var parser=new DOMParser()
+            var xmlDoc=parser.parseFromString(txt,"text/xml")
+            book_title=xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue //mảng có 1 phần tử
+            book_author=xmlDoc.getElementsByTagName("author")[0].childNodes[0].nodeValue
+            book_year=xmlDoc.getElementsByTagName("year")[0].childNodes[0].nodeValue
+            //HTML DOM
+            tdtitle=document.getElementById("tdtitle")
+            tdauthor=document.getElementById("tdauthor")
+            tdyear=document.getElementById("tdyear")
+            //display data
+            tdtitle.innerText=book_title
+            tdauthor.innerText=book_author
+            tdyear.innerHTML="<font color='red'>"+book_year+"</font>"
+        </script>
+    </body>
+</html>

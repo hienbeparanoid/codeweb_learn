@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Kết quả Tổng cộng</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                text-align: center;
+            }
+            table {
+                margin: auto;
+                border-collapse: collapse;
+                width: 50%;
+            }
+            th, td {
+                padding: 10px;
+                border: 1px solid black;
+            }
+            h1 {
+                margin-bottom: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Kết quả Tổng cộng</h1>
+        <table>
+            <tr>
+                <th>Part number</th>
+                <th>Description</th>
+                <th>Qty</th>
+            </tr>
+            <tr>
+                <td>C112</td>
+                <td>Chuột Quang</td>
+                <td id="qty1"></td>
+            </tr>
+            <tr>
+                <td>B124</td>
+                <td>Bàn phím</td>
+                <td id="qty2"></td>
+            </tr>
+            <tr>
+                <td>U125</td>
+                <td>USB KingMax</td>
+                <td id="qty3"></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: right;">Grand Total:</td>
+                <td id="grand_total"></td>
+            </tr>
+        </table>
+
+        <script>
+            function displayTotal() {
+                const urlParams = new URLSearchParams(window.location.search);
+                
+                document.getElementById('qty1').textContent = urlParams.get('qty1');
+                document.getElementById('qty2').textContent = urlParams.get('qty2');
+                document.getElementById('qty3').textContent = urlParams.get('qty3');
+                document.getElementById('grand_total').textContent = urlParams.get('grand_total') + '$';
+            }
+
+            window.onload = displayTotal;
+        </script>
+    </body>
+</html>

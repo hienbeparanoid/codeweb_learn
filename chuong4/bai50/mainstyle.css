@@ -1,0 +1,21 @@
+body {
+    background-color: #e8f5ff;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: red;
+}
+
+button[type="submit"] {
+    border: none;
+}
+
+button[type="button"] {
+    border: none;
+}
+
+button[type="reset"] {
+    border: none;
+}

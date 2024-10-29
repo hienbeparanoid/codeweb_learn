@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách sinh viên</title>
+    <style>
+        th, td {
+            width: 150px;
+            text-align: center;
+        }
+        th {
+            cursor: pointer;
+            background-color: lightgray;
+        }
+        tr:hover {
+            background-color: yellow;
+        }
+        .highlight {
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <table border="1" id="studentTable">
+        <tr>
+            <th colspan="5" style="background-color: aqua;">Danh sách sinh viên</th>
+        </tr>
+        <tr>
+            <th onclick="sortTable(0)">Mã sinh viên</th>
+            <th onclick="sortTable(1)">Họ tên</th>
+            <th onclick="sortTable(2)">Ngày sinh</th>
+            <th onclick="sortTable(3)">Giới tính</th>
+        </tr>
+    </table>
+
+    <script>
+        // Hàm đọc file XML và hiển thị dữ liệu lên bảng
+        function loadStudentData() {
+            // Tạo đối tượng XMLHttpRequest để đọc file XML
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', 'data.xml', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    let xmlDoc = xhr.responseXML;
+                    let students = xmlDoc.getElementsByTagName('sinhvien');
+                    let table = document.getElementById('studentTable');
+
+                    // Duyệt qua từng sinh viên và thêm vào bảng
+                    for (let i = 0; i < students.length; i++) {
+                        let mssv = students[i].getElementsByTagName('mssv')[0].textContent;
+                        let hoTen = students[i].getElementsByTagName('hoTen')[0].textContent;
+                        let ngaySinh = students[i].getElementsByTagName('ngaySinh')[0].textContent;
+                        let gioiTinh = students[i].getElementsByTagName('gioiTinh')[0].textContent;
+
+                        let row = table.insertRow();
+                        row.setAttribute('onclick', `openDetailPage('${mssv}', '${hoTen}', '${ngaySinh}', '${gioiTinh}')`);
+                        row.innerHTML = `<td>${mssv}</td><td>${hoTen}</td><td>${ngaySinh}</td><td>${gioiTinh}</td>`;
+                    }
+                }
+            };
+            xhr.send();
+        }
+
+        // Hàm mở trang chi tiết khi nhấp vào một sinh viên
+        function openDetailPage(mssv, hoTen, ngaySinh, gioiTinh) {
+            // Chuyển hướng đến file detail.html và truyền dữ liệu qua query parameters
+            let url = `detail.html?mssv=${mssv}&hoTen=${encodeURIComponent(hoTen)}&ngaySinh=${ngaySinh}&gioiTinh=${gioiTinh}`;
+            window.location.href = url;
+        }
+
+        // Hàm sắp xếp bảng khi nhấp vào tiêu đề cột
+        function sortTable(columnIndex) {
+            let table = document.getElementById("studentTable");
+            let rows = Array.from(table.rows).slice(1);
+            let sortedRows = rows.sort((a, b) => {
+                let valA = a.cells[columnIndex].innerText;
+                let valB = b.cells[columnIndex].innerText;
+
+                // So sánh giá trị để sắp xếp
+                return valA.localeCompare(valB);
+            });
+
+            // Xóa các hàng hiện tại
+            rows.forEach(row => table.deleteRow(1));
+
+            // Thêm các hàng đã sắp xếp vào lại bảng
+            sortedRows.forEach(row => table.appendChild(row));
+        }
+
+        // Tô màu vàng khi di chuyển chuột vào dòng, và bỏ tô khi di chuyển ra khỏi dòng
+        document.addEventListener('mouseover', function (e) {
+            if (e.target.tagName === 'TD') {
+                let row = e.target.parentElement;
+                row.style.backgroundColor = 'yellow';
+            }
+        });
+
+        document.addEventListener('mouseout', function (e) {
+            if (e.target.tagName === 'TD') {
+                let row = e.target.parentElement;
+                row.style.backgroundColor = '';
+            }
+        });
+
+        // Gọi hàm loadStudentData để tải dữ liệu khi trang được mở
+        window.onload = loadStudentData;
+    </script>
+
+</body>
+</html>

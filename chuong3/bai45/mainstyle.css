@@ -1,0 +1,128 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fffaf0;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.header {
+    background-color: #f4f4f4;
+    text-align: right;
+    padding: 20px 0;
+}
+
+.header h1 {
+    font-size: 2.5em;
+    color: #333;
+}
+
+.line {
+    height: 2px; 
+    background-color: orange; 
+    margin: 0px 0; 
+}
+
+.highlight {
+    color: white; /* Chữ trắng */
+    font-weight: bold;
+    font-size: 15px;
+    background-color: orange; /* Khung màu cam */
+    padding: 10px; /* Khoảng cách bên trong */
+    border-radius: 10px; /* Đồ bo góc */
+}
+
+.main {
+    display: flex;
+    margin-top: 0px;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 200px;
+    background: url(images/back.jpg);
+    padding: 15px;
+}
+
+.sidebar ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    color: #b54c13;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    font-size: 1.1em;
+}
+
+/* Main Content */
+.content {
+    flex: 2;
+    padding: 20px;
+}
+
+.getting-started, .preserving-memories {
+    margin-bottom: 20px;
+}
+
+.getting-started h2, .preserving-memories h2 {
+    color: #e59400;
+    font-size: 1.6em;
+    margin-bottom: 10px;
+}
+
+.getting-started p, .preserving-memories p {
+    line-height: 1.6;
+    margin-bottom: 10px;
+    color: #E7A885;
+}
+
+/* Basic Materials Sidebar */
+.materials {
+    float: right;
+    width: 300px;
+    background-color: #fff2b1;
+    padding: 15px;
+    margin-left: 20px;
+    border: 1px solid #e59400;
+    box-shadow: inset -5px -5px 15px #ffcc66,  /* ánh sáng trên trái */
+                inset 5px 5px 15px #cc7700,          /* bóng dưới phải */
+                5px 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.materials h3 {
+    color: #e59400;
+    margin-bottom: 10px;
+    font-size: 1.5em;
+}
+
+.materials ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+
+.materials ul li {
+    margin-bottom: 10px;
+    color: #E7A885;
+}
+
+/* Footer */
+.footer {
+    color: #f7c11f;
+    font-size: 0.9em;
+    text-align: center;
+}
+
